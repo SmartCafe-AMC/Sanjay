@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free AI Courses | Global Tech Leaders</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        dark: {
+                            900: '#0f172a',
+                            800: '#1e293b',
+                            700: '#334155',
+                        },
+                        accent: {
+                            blue: '#3b82f6',
+                            purple: '#8b5cf6',
+                            cyan: '#06b6d4',
+                        }
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0f172a;
+            overflow-x: hidden;
+        }
+        
+        .glass-effect {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #60a5fa 0%, #a78bfa 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px -15px rgba(59, 130, 246, 0.3);
+        }
+        
+        .search-input:focus {
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
+        }
+        
+        .bg-grid {
+            background-image: linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+            background-size: 50px 50px;
+        }
+        
+        .company-logo {
+            transition: transform 0.3s ease;
+        }
+        
+        .card-hover:hover .company-logo {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body class="bg-dark-900 text-gray-100 min-h-screen relative">
+    <!-- Background Effects -->
+    <div class="fixed inset-0 bg-grid z-0 pointer-events-none"></div>
+    <div class="fixed top-0 left-1/4 w-96 h-96 bg-accent-blue/20 rounded-full blur-3xl animate-pulse-slow pointer-events-none"></div>
+    <div class="fixed bottom-0 right-1/4 w-96 h-96 bg-accent-purple/20 rounded-full blur-3xl animate-pulse-slow pointer-events-none" style="animation-delay: 2s;"></div>
+
+    <!-- Main Container -->
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        
+        <!-- Hero Section -->
+        <div class="text-center mb-16 animate-float">
+            <h1 class="text-4xl md:text-6xl font-bold mb-6 gradient-text leading-tight">
+                Free AI Courses From<br>Top Tech Companies
+            </h1>
+            <p class="text-xl text-gray-400 max-w-2xl mx-auto mb-8">
+                Master Artificial Intelligence, Machine Learning, and Generative AI with completely free courses from world-leading technology companies.
+            </p>
+            
+            <!-- Search Bar -->
+            <div class="max-w-2xl mx-auto relative">
+                <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                    <svg class="h-6 w-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                    </svg>
+                </div>
+                <input 
+                    type="text" 
+                    id="searchInput" 
+                    placeholder="Search by company (e.g., Google, Microsoft) or topic (e.g., Machine Learning)..." 
+                    class="w-full pl-12 pr-4 py-4 bg-dark-800 border border-dark-700 rounded-2xl text-white placeholder-gray-500 focus:outline-none focus:border-accent-blue search-input transition-all text-lg"
+                >
+            </div>
+            
+            <!-- Filter Tags -->
+            <div class="flex flex-wrap justify-center gap-3 mt-6" id="filterTags">
+                <button onclick="filterByTopic('all')" class="px-4 py-2 rounded-full bg-accent-blue/20 text-accent-blue border border-accent-blue/30 hover:bg-accent-blue/30 transition-all text-sm font-medium">All</button>
+                <button onclick="filterByTopic('Beginner')" class="px-4 py-2 rounded-full bg-dark-800 text-gray-400 border border-dark-700 hover:border-accent-cyan hover:text-accent-cyan transition-all text-sm font-medium">Beginner</button>
+                <button onclick="filterByTopic('Intermediate')" class="px-4 py-2 rounded-full bg-dark-800 text-gray-400 border border-dark-700 hover:border-accent-purple hover:text-accent-purple transition-all text-sm font-medium">Intermediate</button>
+                <button onclick="filterByTopic('Machine Learning')" class="px-4 py-2 rounded-full bg-dark-800 text-gray-400 border border-dark-700 hover:border-green-400 hover:text-green-400 transition-all text-sm font-medium">Machine Learning</button>
+                <button onclick="filterByTopic('Generative AI')" class="px-4 py-2 rounded-full bg-dark-800 text-gray-400 border border-dark-700 hover:border-pink-400 hover:text-pink-400 transition-all text-sm font-medium">Generative AI</button>
+            </div>
+        </div>
+
+        <!-- Course Grid -->
+        <div id="courseGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+            <!-- Cards will be dynamically inserted here -->
+        </div>
+
+        <!-- Stats Section -->
+        <div class="glass-effect rounded-3xl p-8 mb-16 text-center">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="text-3xl font-bold text-accent-blue" id="totalCourses">0</div>
+                    <div class="text-gray-400 mt-2">Free Courses</div>
+                </div>
+                <div>
+                    <div class="text-3xl font-bold text-accent-purple" id="totalCompanies">0</div>
+                    <div class="text-gray-400 mt-2">Tech Companies</div>
+                </div>
+                <div>
+                    <div class="text-3xl font-bold text-accent-cyan" id="beginnerCourses">0</div>
+                    <div class="text-gray-400 mt-2">Beginner Friendly</div>
+                </div>
+                <div>
+                    <div class="text-3xl font-bold text-green-400">100%</div>
+                    <div class="text-gray-400 mt-2">Free Access</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="text-center text-gray-500 text-sm border-t border-dark-700 pt-8">
+            <p class="mb-4">
+                <strong>Disclaimer:</strong> All courses are owned and hosted by their respective companies. 
+                This website serves as a curated directory for educational purposes only.
+            </p>
+            <p>
+                &copy; 2026 Free AI Courses Directory. Not affiliated with any listed companies.
+            </p>
+        </footer>
+    </div>
+
+    <script>
+        // Course Data
+        const courses = [
+            // Google
+            {
+                company: "Google",
+                logo: "G",
+                logoColor: "bg-blue-500",
+                title: "Machine Learning Crash Course",
+                description: "Fast-paced, practical introduction to machine learning with TensorFlow APIs. Features 30+ exercises and real-world case studies.",
+                difficulty: "Intermediate",
+                duration: "15 hours",
+                platform: "Google Cloud Training",
+                url: "https://developers.google.com/machine-learning/crash-course",
+                tags: ["Machine Learning", "TensorFlow", "Intermediate"]
+            },
+            {
+                company: "Google",
+                logo: "G",
+                logoColor: "bg-green-500",
+                title: "Generative AI Learning Path",
+                description: "Comprehensive introduction to generative AI products and technologies, from large language models to responsible AI principles.",
+                difficulty: "Beginner",
+                duration: "10 hours",
+                platform: "Google Cloud Skills Boost",
+                url: "https://www.cloudskillsboost.google/paths/118",
+                tags: ["Generative AI", "LLM", "Beginner"]
+            },
+            {
+                company: "Google",
+                logo: "G",
+                logoColor: "bg-red-500",
+                title: "Introduction to AI and Machine Learning",
+                description: "Learn fundamental AI concepts including neural networks, deep learning, and how ML models are trained and deployed.",
+                difficulty: "Beginner",
+                duration: "8 hours",
+                platform: "Google Cloud Training",
+                url: "https://cloud.google.com/learn/training/machinelearning-ai",
+                tags: ["AI Fundamentals", "Beginner"]
+            },
+            // Microsoft
+            {
+                company: "Microsoft",
+                logo: "M",
+                logoColor: "bg-blue-600",
+                title: "AI Fundamentals",
+                description: "Explore core AI concepts including machine learning, computer vision, natural language processing, and conversational AI.",
+                difficulty: "Beginner",
+                duration: "12 hours",
+                platform: "Microsoft Learn",
+                url: "https://learn.microsoft.com/en-us/training/paths/get-started-with-artificial-intelligence-on-azure/",
+                tags: ["AI Fundamentals", "Azure", "Beginner"]
+            },
+            {
+                company: "Microsoft",
+                logo: "M",
+                logoColor: "bg-indigo-600",
+                title: "Generative AI Fundamentals",
+                description: "Understand how large language models work, prompt engineering basics, and responsible AI practices for generative models.",
+                difficulty: "Beginner",
+                duration: "4 hours",
+                platform: "Microsoft Learn",
+                url: "https://learn.microsoft.com/en-us/training/paths/introduction-generative-ai/",
+                tags: ["Generative AI", "LLM", "Beginner"]
+            },
+            {
+                company: "Microsoft",
+                logo: "M",
+                logoColor: "bg-purple-600",
+                title: "Machine Learning Engineer Path",
+                description: "Complete learning path to design and implement ML solutions using Azure Machine Learning and open-source frameworks.",
+                difficulty: "Intermediate",
+                duration: "30 hours",
+                platform: "Microsoft Learn",
+                url: "https://learn.microsoft.com/en-us/training/career-paths/machine-learning-engineer",
+                tags: ["Machine Learning", "Azure", "Intermediate"]
+            },
+            // IBM
+            {
+                company: "IBM",
+                logo: "I",
+                logoColor: "bg-blue-700",
+                title: "AI Fundamentals",
+                description: "Introduction to artificial intelligence covering history, neural networks, deep learning, and cognitive computing.",
+                difficulty: "Beginner",
+                duration: "10 hours",
+                platform: "IBM SkillsBuild",
+                url: "https://skillsbuild.org/artificial-intelligence",
+                tags: ["AI Fundamentals", "Beginner"]
+            },
+            {
+                company: "IBM",
+                logo: "I",
+                logoColor: "bg-cyan-600",
+                title: "Generative AI for Everyone",
+                description: "Learn how generative AI works, prompt engineering, and build applications using IBM watsonx.ai platform.",
+                difficulty: "Beginner",
+                duration: "6 hours",
+                platform: "IBM SkillsBuild",
+                url: "https://skillsbuild.org/artificial-intelligence",
+                tags: ["Generative AI", "Prompt Engineering", "Beginner"]
+            },
+            {
+                company: "IBM",
+                logo: "I",
+                logoColor: "bg-indigo-700",
+                title: "Data Science Professional Certificate",
+                description: "Comprehensive program covering Python, SQL, data visualization, machine learning, and capstone project.",
+                difficulty: "Intermediate",
+                duration: "120 hours",
+                platform: "Coursera (IBM)",
+                url: "https://www.coursera.org/professional-certificates/ibm-data-science",
+                tags: ["Data Science", "Python", "Intermediate"]
+            },
+            // Amazon
+            {
+                company: "Amazon",
+                logo: "A",
+                logoColor: "bg-orange-500",
+                title: "Machine Learning University",
+                description: "Amazon's internal ML training now available publicly. Covers NLP, computer vision, and tabular data modeling.",
+                difficulty: "Intermediate",
+                duration: "40 hours",
+                platform: "AWS Training",
+                url: "https://aws.amazon.com/machine-learning/mlu/",
+                tags: ["Machine Learning", "Deep Learning", "Intermediate"]
+            },
+            {
+                company: "Amazon",
+                logo: "A",
+                logoColor: "bg-yellow-600",
+                title: "Generative AI Learning Plan",
+                description: "Five-course series covering generative AI fundamentals, planning projects, prompt engineering, and building apps with Bedrock.",
+                difficulty: "Beginner",
+                duration: "11 hours",
+                platform: "AWS Skill Builder",
+                url: "https://skillbuilder.aws/generative-ai",
+                tags: ["Generative AI", "AWS", "Beginner"]
+            },
+            {
+                company: "Amazon",
+                logo: "A",
+                logoColor: "bg-blue-600",
+                title: "Foundations of Prompt Engineering",
+                description: "Master prompt engineering techniques to optimize LLM outputs for various business use cases on AWS.",
+                difficulty: "Beginner",
+                duration: "4 hours",
+                platform: "AWS Skill Builder",
+                url: "https://skillbuilder.aws/generative-ai",
+                tags: ["Prompt Engineering", "Generative AI", "Beginner"]
+            },
+            // Meta
+            {
+                company: "Meta",
+                logo: "M",
+                logoColor: "bg-blue-500",
+                title: "Generative AI for Marketers",
+                description: "Learn how to write effective prompts to generate copy and imagery, create targeted campaigns using AI tools.",
+                difficulty: "Beginner",
+                duration: "2 hours",
+                platform: "Meta Blueprint",
+                url: "https://www.facebook.com/business/learn",
+                tags: ["Generative AI", "Marketing", "Beginner"]
+            },
+            {
+                company: "Meta",
+                logo: "M",
+                logoColor: "bg-indigo-500",
+                title: "AI Fundamentals for Business",
+                description: "Understanding AI applications in advertising, automation, and customer engagement across Meta platforms.",
+                difficulty: "Beginner",
+                duration: "3 hours",
+                platform: "Meta Blueprint",
+                url: "https://www.facebook.com/business/learn",
+                tags: ["AI Fundamentals", "Business", "Beginner"]
+            },
+            // NVIDIA
+            {
+                company: "NVIDIA",
+                logo: "N",
+                logoColor: "bg-green-600",
+                title: "Generative AI Explained",
+                description: "Learn how generative AI works, various applications, and understand challenges and opportunities in GenAI.",
+                difficulty: "Beginner",
+                duration: "2 hours",
+                platform: "NVIDIA Deep Learning Institute",
+                url: "https://www.nvidia.com/training/generative-ai/",
+                tags: ["Generative AI", "Beginner"]
+            },
+            {
+                company: "NVIDIA",
+                logo: "N",
+                logoColor: "bg-emerald-600",
+                title: "Building RAG Agents with LLMs",
+                description: "Hands-on course on building retrieval-augmented generation systems using LangChain and vector databases.",
+                difficulty: "Intermediate",
+                duration: "8 hours",
+                platform: "NVIDIA DLI",
+                url: "https://www.nvidia.com/training/generative-ai/",
+                tags: ["LLM", "RAG", "Intermediate"]
+            },
+            {
+                company: "NVIDIA",
+                logo: "N",
+                logoColor: "bg-teal-600",
+                title: "Getting Started with AI on Jetson Nano",
+                description: "Build AI projects on edge devices. Learn image classification, object detection, and neural network basics.",
+                difficulty: "Beginner",
+                duration: "8 hours",
+                platform: "NVIDIA DLI",
+                url: "https://www.nvidia.com/training/embedded-systems/",
+                tags: ["Edge AI", "Computer Vision", "Beginner"]
+            },
+            {
+                company: "NVIDIA",
+                logo: "N",
+                logoColor: "bg-cyan-600",
+                title: "Building a Brain in 10 Minutes",
+                description: "Quick introduction to neural networks, understanding how neurons work and how networks learn from data.",
+                difficulty: "Beginner",
+                duration: "10 minutes",
+                platform: "NVIDIA DLI",
+                url: "https://www.nvidia.com/training/deep-learning/",
+                tags: ["Neural Networks", "Deep Learning", "Beginner"]
+            },
+            // Intel
+            {
+                company: "Intel",
+                logo: "I",
+                logoColor: "bg-blue-500",
+                title: "AI Fundamentals Course",
+                description: "Introduction to AI concepts, machine learning workflow, and Intel's AI tools and optimizations.",
+                difficulty: "Beginner",
+                duration: "6 hours",
+                platform: "Intel AI Academy",
+                url: "https://www.intel.com/content/www/us/en/developer/topic-technology/artificial-intelligence/training/overview.html",
+                tags: ["AI Fundamentals", "Beginner"]
+            },
+            {
+                company: "Intel",
+                logo: "I",
+                logoColor: "bg-indigo-500",
+                title: "Machine Learning with Intel oneAPI",
+                description: "Optimize ML workflows using Intel's oneAPI toolkit and accelerate data science pipelines.",
+                difficulty: "Intermediate",
+                duration: "10 hours",
+                platform: "Intel Developer Zone",
+                url: "https://www.intel.com/content/www/us/en/developer/topic-technology/artificial-intelligence/training/overview.html",
+                tags: ["Machine Learning", "oneAPI", "Intermediate"]
+            },
+            // Salesforce
+            {
+                company: "Salesforce",
+                logo: "S",
+                logoColor: "bg-blue-400",
+                title: "AI Fundamentals",
+                description: "Learn AI basics, machine learning concepts, and how Salesforce integrates AI into CRM workflows.",
+                difficulty: "Beginner",
+                duration: "8 hours",
+                platform: "Trailhead",
+                url: "https://trailhead.salesforce.com/content/learn/modules/artificial-intelligence-basics",
+                tags: ["AI Fundamentals", "CRM", "Beginner"]
+            },
+            {
+                company: "Salesforce",
+                logo: "S",
+                logoColor: "bg-indigo-400",
+                title: "Generative AI Trail",
+                description: "Explore Einstein GPT, prompt engineering, and responsible AI practices in Salesforce ecosystem.",
+                difficulty: "Beginner",
+                duration: "6 hours",
+                platform: "Trailhead",
+                url: "https://trailhead.salesforce.com/content/learn/trails/get-started-with-einstein-gpt",
+                tags: ["Generative AI", "Einstein", "Beginner"]
+            },
+            {
+                company: "Salesforce",
+                logo: "S",
+                logoColor: "bg-purple-400",
+                title: "AI Associate Certification Prep",
+                description: "Prepare for Salesforce AI Associate certification covering ethical AI, data quality, and CRM AI capabilities.",
+                difficulty: "Beginner",
+                duration: "12 hours",
+                platform: "Trailhead",
+                url: "https://trailhead.salesforce.com/en/credentials/aiassociate",
+                tags: ["Certification", "AI Ethics", "Beginner"]
+            },
+            // Cisco
+            {
+                company: "Cisco",
+                logo: "C",
+                logoColor: "bg-blue-600",
+                title: "Introduction to Modern AI",
+                description: "Learn to use AI in daily life, craft effective prompts, chatbots, computer vision and machine translation.",
+                difficulty: "Beginner",
+                duration: "6 hours",
+                platform: "Cisco Networking Academy",
+                url: "https://www.netacad.com/courses/introduction-modern-ai",
+                tags: ["AI Fundamentals", "Beginner"]
+            },
+            {
+                company: "Cisco",
+                logo: "C",
+                logoColor: "bg-cyan-600",
+                title: "Introduction to Data Science",
+                description: "Explore how data transforms the world, data analysis basics, and data-driven decision making.",
+                difficulty: "Beginner",
+                duration: "6 hours",
+                platform: "Cisco Networking Academy",
+                url: "https://www.netacad.com/courses/introduction-data-science",
+                tags: ["Data Science", "Beginner"]
+            },
+            {
+                company: "Cisco",
+                logo: "C",
+                logoColor: "bg-teal-600",
+                title: "Data Science Essentials with Python",
+                description: "Practical data science skills using Python including pandas, visualization, and statistical analysis.",
+                difficulty: "Intermediate",
+                duration: "30 hours",
+                platform: "Cisco Networking Academy",
+                url: "https://www.netacad.com/courses/data-science-essentials-python",
+                tags: ["Data Science", "Python", "Intermediate"]
+            },
+            // Accenture
+            {
+                company: "Accenture",
+                logo: "A",
+                logoColor: "bg-purple-600",
+                title: "Digital Skills: Artificial Intelligence",
+                description: "Understand AI history, current applications, and future impact on work. CPD accredited course.",
+                difficulty: "Beginner",
+                duration: "3 weeks",
+                platform: "FutureLearn/Accenture",
+                url: "https://www.futurelearn.com/courses/artificial-intelligence",
+                tags: ["AI Fundamentals", "Digital Skills", "Beginner"]
+            },
+            // PwC
+            {
+                company: "PwC",
+                logo: "P",
+                logoColor: "bg-orange-600",
+                title: "AI Skills Boost Program",
+                description: "UK Government backed AI training covering practical AI skills for work with virtual AI foundations badge.",
+                difficulty: "Beginner",
+                duration: "10 hours",
+                platform: "AI Skills Hub",
+                url: "https://www.aiskillshub.org.uk",
+                tags: ["AI Fundamentals", "Business AI", "Beginner"]
+            },
+            // Infosys
+            {
+                company: "Infosys",
+                logo: "I",
+                logoColor: "bg-blue-500",
+                title: "AI Certification Program",
+                description: "Comprehensive AI and Generative AI training including deep learning, NLP, and prompt engineering masterclass.",
+                difficulty: "Beginner",
+                duration: "40 hours",
+                platform: "Infosys Springboard",
+                url: "https://infyspringboard.us.onwingspan.com/web/en/login",
+                tags: ["AI Fundamentals", "Generative AI", "Beginner"]
+            },
+            {
+                company: "Infosys",
+                logo: "I",
+                logoColor: "bg-cyan-500",
+                title: "Citizens Data Science",
+                description: "Cover Python, linear algebra, statistics, and exploratory data analysis for aspiring data scientists.",
+                difficulty: "Intermediate",
+                duration: "25 hours",
+                platform: "Infosys Springboard",
+                url: "https://infyspringboard.us.onwingspan.com/web/en/login",
+                tags: ["Data Science", "Python", "Intermediate"]
+            },
+            // TCS
+            {
+                company: "TCS",
+                logo: "T",
+                logoColor: "bg-blue-700",
+                title: "Career Edge - Young Professional",
+                description: "15-day course covering AI fundamentals, digital skills, communication, and workplace readiness.",
+                difficulty: "Beginner",
+                duration: "15 days",
+                platform: "TCS iON",
+                url: "https://www.tcsion.com/courses/career-edge-young-professional/",
+                tags: ["AI Fundamentals", "Career Skills", "Beginner"]
+            },
+            // SAP
+            {
+                company: "SAP",
+                logo: "S",
+                logoColor: "bg-blue-600",
+                title: "AI Fundamentals",
+                description: "Introduction to AI basics, generative AI, and SAP's enterprise AI approach with responsible AI practices.",
+                difficulty: "Beginner",
+                duration: "3 hours",
+                platform: "openSAP",
+                url: "https://open.sap.com",
+                tags: ["AI Fundamentals", "Enterprise AI", "Beginner"]
+            },
+            {
+                company: "SAP",
+                logo: "S",
+                logoColor: "bg-indigo-600",
+                title: "SAP Business AI Capabilities",
+                description: "Learn about Joule AI assistant, embedded AI in SAP applications, and intelligent automation.",
+                difficulty: "Intermediate",
+                duration: "6 hours",
+                platform: "SAP Learning",
+                url: "https://learning.sap.com",
+                tags: ["Business AI", "Joule", "Intermediate"]
+            },
+            // Siemens
+            {
+                company: "Siemens",
+                logo: "S",
+                logoColor: "bg-teal-600",
+                title: "AI for Everyone",
+                description: "Basic knowledge of AI and how to leverage GenAI to drive impact for your organization.",
+                difficulty: "Beginner",
+                duration: "2 hours",
+                platform: "Siemens Xcelerator",
+                url: "https://xcelerator.siemens.com/global/en/learning-hub.html",
+                tags: ["AI Fundamentals", "Industrial AI", "Beginner"]
+            },
+            // Red Hat
+            {
+                company: "Red Hat",
+                logo: "R",
+                logoColor: "bg-red-600",
+                title: "Red Hat AI Foundations",
+                description: "Free training on AI concepts, enterprise AI deployment, and open source AI technologies.",
+                difficulty: "Beginner",
+                duration: "8 hours",
+                platform: "Red Hat Learning",
+                url: "https://www.redhat.com/en/services/training-and-certification",
+                tags: ["AI Fundamentals", "Open Source", "Beginner"]
+            }
+        ];
+
+        // Stats calculation
+        function updateStats() {
+            const uniqueCompanies = [...new Set(courses.map(c => c.company))].length;
+            const beginnerCount = courses.filter(c => c.difficulty === 'Beginner').length;
+            
+            document.getElementById('totalCourses').textContent = courses.length;
+            document.getElementById('totalCompanies').textContent = uniqueCompanies;
+            document.getElementById('beginnerCourses').textContent = beginnerCount;
+        }
+
+        // Difficulty badge color
+        function getDifficultyColor(difficulty) {
+            switch(difficulty) {
+                case 'Beginner': return 'bg-green-500/20 text-green-400 border-green-500/30';
+                case 'Intermediate': return 'bg-yellow-500/20 text-yellow-400 border-yellow-500/30';
+                case 'Advanced': return 'bg-red-500/20 text-red-400 border-red-500/30';
+                default: return 'bg-gray-500/20 text-gray-400 border-gray-500/30';
+            }
+        }
+
+        // Create course card HTML
+        function createCard(course) {
+            const difficultyClass = getDifficultyColor(course.difficulty);
+            
+            return `
+                <div class="glass-effect rounded-2xl p-6 card-hover cursor-pointer group" onclick="window.open('${course.url}', '_blank')">
+                    <div class="flex items-start justify-between mb-4">
+                        <div class="company-logo w-12 h-12 ${course.logoColor} rounded-xl flex items-center justify-center text-white font-bold text-xl shadow-lg">
+                            ${course.logo}
+                        </div>
+                        <span class="px-3 py-1 rounded-full text-xs font-semibold border ${difficultyClass}">
+                            ${course.difficulty}
+                        </span>
+                    </div>
+                    
+                    <h3 class="text-xl font-bold text-white mb-2 group-hover:text-accent-blue transition-colors line-clamp-2">
+                        ${course.title}
+                    </h3>
+                    
+                    <p class="text-gray-400 text-sm mb-4 line-clamp-3 leading-relaxed">
+                        ${course.description}
+                    </p>
+                    
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        ${course.tags.map(tag => `
+                            <span class="text-xs px-2 py-1 rounded-md bg-dark-800 text-gray-400 border border-dark-700">
+                                ${tag}
+                            </span>
+                        `).join('')}
+                    </div>
+                    
+                    <div class="flex items-center justify-between pt-4 border-t border-dark-700">
+                        <div class="text-xs text-gray-500">
+                            <div class="flex items-center gap-1 mb-1">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                </svg>
+                                ${course.duration}
+                            </div>
+                            <div class="font-medium text-gray-400">${course.platform}</div>
+                        </div>
+                        <div class="flex items-center gap-2 text-accent-blue opacity-0 group-hover:opacity-100 transition-opacity">
+                            <span class="text-sm font-medium">View Course</span>
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                            </svg>
+                        </div>
+                    </div>
+                    
+                    <div class="absolute top-4 right-4">
+                        <span class="px-2 py-1 bg-accent-blue/20 text-accent-blue text-xs font-bold rounded-full border border-accent-blue/30">
+                            FREE
+                        </span>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Render courses
+        function renderCourses(coursesToRender) {
+            const grid = document.getElementById('courseGrid');
+            if (coursesToRender.length === 0) {
+                grid.innerHTML = `
+                    <div class="col-span-full text-center py-20">
+                        <div class="text-6xl mb-4">🔍</div>
+                        <h3 class="text-xl font-semibold text-gray-400">No courses found</h3>
+                        <p class="text-gray-600 mt-2">Try adjusting your search terms</p>
+                    </div>
+                `;
+            } else {
+                grid.innerHTML = coursesToRender.map(course => createCard(course)).join('');
+            }
+        }
+
+        // Filter functionality
+        let currentFilter = 'all';
+        
+        function filterCourses(searchTerm) {
+            const term = searchTerm.toLowerCase();
+            const filtered = courses.filter(course => {
+                const matchesSearch = 
+                    course.company.toLowerCase().includes(term) ||
+                    course.title.toLowerCase().includes(term) ||
+                    course.description.toLowerCase().includes(term) ||
+                    course.tags.some(tag => tag.toLowerCase().includes(term));
+                
+                const matchesFilter = currentFilter === 'all' || 
+                    course.difficulty === currentFilter ||
+                    course.tags.includes(currentFilter);
+                
+                return matchesSearch && matchesFilter;
+            });
+            renderCourses(filtered);
+        }
+
+        function filterByTopic(topic) {
+            currentFilter = topic;
+            // Update active button state
+            document.querySelectorAll('#filterTags button').forEach(btn => {
+                if (btn.textContent === topic || (topic === 'all' && btn.textContent === 'All')) {
+                    btn.classList.remove('bg-dark-800', 'text-gray-400', 'border-dark-700');
+                    btn.classList.add('bg-accent-blue/20', 'text-accent-blue', 'border-accent-blue/30');
+                } else {
+                    btn.classList.add('bg-dark-800', 'text-gray-400', 'border-dark-700');
+                    btn.classList.remove('bg-accent-blue/20', 'text-accent-blue', 'border-accent-blue/30');
+                }
+            });
+            
+            const searchTerm = document.getElementById('searchInput').value;
+            filterCourses(searchTerm);
+        }
+
+        // Search input listener
+        document.getElementById('searchInput').addEventListener('input', (e) => {
+            filterCourses(e.target.value);
+        });
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            updateStats();
+            renderCourses(courses);
+        });
+    </script>
+</body>
+</html>
