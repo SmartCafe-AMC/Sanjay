@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Full-Stack Learning Hub | Free Certifications</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .gradient-text {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .card-hover {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.3);
+        }
+        .filter-btn.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        .company-logo {
+            filter: grayscale(100%);
+            opacity: 0.7;
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover .company-logo {
+            filter: grayscale(0%);
+            opacity: 1;
+        }
+        .skill-badge {
+            background: rgba(102, 126, 234, 0.1);
+            color: #667eea;
+            border: 1px solid rgba(102, 126, 234, 0.2);
+        }
+        .animate-fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .search-input:focus {
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-900">
+
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm sticky top-0 z-50 backdrop-blur-md bg-opacity-90">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-lg flex items-center justify-center text-white font-bold text-xl">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <span class="text-xl font-bold gradient-text">AI Full-Stack Hub</span>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#courses" class="text-gray-600 hover:text-indigo-600 font-medium transition">Courses</a>
+                    <a href="#roadmap" class="text-gray-600 hover:text-indigo-600 font-medium transition">Roadmap</a>
+                    <a href="#about" class="text-gray-600 hover:text-indigo-600 font-medium transition">About</a>
+                    <button class="bg-indigo-600 text-white px-5 py-2 rounded-full font-medium hover:bg-indigo-700 transition shadow-lg hover:shadow-xl">
+                        Get Started
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative overflow-hidden bg-white">
+        <div class="absolute inset-0 bg-gradient-to-br from-indigo-50 via-white to-purple-50 opacity-70"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 relative">
+            <div class="text-center max-w-4xl mx-auto">
+                <div class="inline-flex items-center px-4 py-2 rounded-full bg-indigo-100 text-indigo-800 text-sm font-semibold mb-6">
+                    <span class="w-2 h-2 bg-indigo-600 rounded-full mr-2 animate-pulse"></span>
+                    100% Free Verified Certificates
+                </div>
+                <h1 class="text-5xl md:text-6xl font-extrabold mb-6 leading-tight">
+                    Master <span class="gradient-text">AI Full-Stack</span><br>
+                    Development for Free
+                </h1>
+                <p class="text-xl text-gray-600 mb-10 max-w-2xl mx-auto leading-relaxed">
+                    Curated collection of 25+ professional courses from Google, Microsoft, IBM, Meta, AWS, NVIDIA, and more. 
+                    Zero cost. Industry-recognized certificates. Real-world skills.
+                </p>
+                
+                <!-- Stats -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-3xl mx-auto mb-10">
+                    <div class="bg-white p-4 rounded-xl shadow-md border border-gray-100">
+                        <div class="text-3xl font-bold text-indigo-600">25+</div>
+                        <div class="text-sm text-gray-500">Free Courses</div>
+                    </div>
+                    <div class="bg-white p-4 rounded-xl shadow-md border border-gray-100">
+                        <div class="text-3xl font-bold text-purple-600">10+</div>
+                        <div class="text-sm text-gray-500">Top Companies</div>
+                    </div>
+                    <div class="bg-white p-4 rounded-xl shadow-md border border-gray-100">
+                        <div class="text-3xl font-bold text-pink-600">100%</div>
+                        <div class="text-sm text-gray-500">Free Certs</div>
+                    </div>
+                    <div class="bg-white p-4 rounded-xl shadow-md border border-gray-100">
+                        <div class="text-3xl font-bold text-blue-600">0$</div>
+                        <div class="text-sm text-gray-500">Total Cost</div>
+                    </div>
+                </div>
+
+                <!-- Search -->
+                <div class="max-w-2xl mx-auto relative">
+                    <input type="text" id="searchInput" placeholder="Search courses, skills, or companies..." 
+                           class="w-full px-6 py-4 rounded-full border-2 border-gray-200 focus:border-indigo-500 focus:outline-none search-input text-lg shadow-sm">
+                    <button class="absolute right-2 top-2 bg-indigo-600 text-white p-3 rounded-full hover:bg-indigo-700 transition">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Filters -->
+    <section class="bg-white border-b border-gray-200 sticky top-16 z-40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+            <div class="flex flex-wrap gap-3 justify-center" id="filterContainer">
+                <button class="filter-btn active px-5 py-2 rounded-full border border-gray-300 font-medium text-sm transition hover:border-indigo-500" data-filter="all">
+                    All Courses
+                </button>
+                <button class="filter-btn px-5 py-2 rounded-full border border-gray-300 font-medium text-sm transition hover:border-indigo-500" data-filter="beginner">
+                    Beginner
+                </button>
+                <button class="filter-btn px-5 py-2 rounded-full border border-gray-300 font-medium text-sm transition hover:border-indigo-500" data-filter="intermediate">
+                    Intermediate
+                </button>
+                <button class="filter-btn px-5 py-2 rounded-full border border-gray-300 font-medium text-sm transition hover:border-indigo-500" data-filter="advanced">
+                    Advanced
+                </button>
+                <button class="filter-btn px-5 py-2 rounded-full border border-gray-300 font-medium text-sm transition hover:border-indigo-500" data-filter="python">
+                    Python
+                </button>
+                <button class="filter-btn px-5 py-2 rounded-full border border-gray-300 font-medium text-sm transition hover:border-indigo-500" data-filter="javascript">
+                    JavaScript
+                </button>
+                <button class="filter-btn px-5 py-2 rounded-full border border-gray-300 font-medium text-sm transition hover:border-indigo-500" data-filter="ai-ml">
+                    AI & ML
+                </button>
+                <button class="filter-btn px-5 py-2 rounded-full border border-gray-300 font-medium text-sm transition hover:border-indigo-500" data-filter="cloud">
+                    Cloud & DevOps
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Courses Grid -->
+    <section id="courses" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="coursesGrid">
+            <!-- Course cards will be injected here by JavaScript -->
+        </div>
+        
+        <!-- No Results -->
+        <div id="noResults" class="hidden text-center py-20">
+            <div class="text-6xl mb-4">🔍</div>
+            <h3 class="text-2xl font-bold text-gray-800 mb-2">No courses found</h3>
+            <p class="text-gray-600">Try adjusting your search or filters</p>
+        </div>
+    </section>
+
+    <!-- Learning Roadmap Section -->
+    <section id="roadmap" class="bg-gray-900 text-white py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4">Your Learning Roadmap</h2>
+                <p class="text-gray-400 max-w-2xl mx-auto">Follow this structured path from complete beginner to AI Full-Stack Engineer</p>
+            </div>
+            
+            <div class="relative">
+                <div class="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-indigo-500 to-purple-600 hidden md:block"></div>
+                
+                <!-- Phase 1 -->
+                <div class="relative mb-12 md:flex items-center justify-between">
+                    <div class="md:w-5/12 mb-4 md:mb-0 md:text-right">
+                        <div class="bg-gray-800 p-6 rounded-xl border border-gray-700 hover:border-indigo-500 transition">
+                            <h3 class="text-xl font-bold text-indigo-400 mb-2">Phase 1: Foundations</h3>
+                            <p class="text-gray-400 text-sm mb-3">Months 1-2</p>
+                            <ul class="text-sm text-gray-300 space-y-1">
+                                <li>• Python Programming</li>
+                                <li>• HTML/CSS/JavaScript</li>
+                                <li>• Git & Version Control</li>
+                                <li>• Basic SQL</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="absolute left-1/2 transform -translate-x-1/2 w-8 h-8 bg-indigo-500 rounded-full border-4 border-gray-900 hidden md:block"></div>
+                    <div class="md:w-5/12"></div>
+                </div>
+
+                <!-- Phase 2 -->
+                <div class="relative mb-12 md:flex items-center justify-between">
+                    <div class="md:w-5/12"></div>
+                    <div class="absolute left-1/2 transform -translate-x-1/2 w-8 h-8 bg-purple-500 rounded-full border-4 border-gray-900 hidden md:block"></div>
+                    <div class="md:w-5/12 mb-4 md:mb-0">
+                        <div class="bg-gray-800 p-6 rounded-xl border border-gray-700 hover:border-purple-500 transition">
+                            <h3 class="text-xl font-bold text-purple-400 mb-2">Phase 2: Full-Stack Core</h3>
+                            <p class="text-gray-400 text-sm mb-3">Months 3-5</p>
+                            <ul class="text-sm text-gray-300 space-y-1">
+                                <li>• React/Frontend Frameworks</li>
+                                <li>• Node.js & Express</li>
+                                <li>• MongoDB/NoSQL</li>
+                                <li>• REST API Design</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Phase 3 -->
+                <div class="relative mb-12 md:flex items-center justify-between">
+                    <div class="md:w-5/12 mb-4 md:mb-0 md:text-right">
+                        <div class="bg-gray-800 p-6 rounded-xl border border-gray-700 hover:border-pink-500 transition">
+                            <h3 class="text-xl font-bold text-pink-400 mb-2">Phase 3: AI & Machine Learning</h3>
+                            <p class="text-gray-400 text-sm mb-3">Months 6-8</p>
+                            <ul class="text-sm text-gray-300 space-y-1">
+                                <li>• ML Fundamentals</li>
+                                <li>• Deep Learning Basics</li>
+                                <li>• TensorFlow/PyTorch</li>
+                                <li>• NLP & Computer Vision</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="absolute left-1/2 transform -translate-x-1/2 w-8 h-8 bg-pink-500 rounded-full border-4 border-gray-900 hidden md:block"></div>
+                    <div class="md:w-5/12"></div>
+                </div>
+
+                <!-- Phase 4 -->
+                <div class="relative md:flex items-center justify-between">
+                    <div class="md:w-5/12"></div>
+                    <div class="absolute left-1/2 transform -translate-x-1/2 w-8 h-8 bg-blue-500 rounded-full border-4 border-gray-900 hidden md:block"></div>
+                    <div class="md:w-5/12 mb-4 md:mb-0">
+                        <div class="bg-gray-800 p-6 rounded-xl border border-gray-700 hover:border-blue-500 transition">
+                            <h3 class="text-xl font-bold text-blue-400 mb-2">Phase 4: Advanced & Deployment</h3>
+                            <p class="text-gray-400 text-sm mb-3">Months 9-12</p>
+                            <ul class="text-sm text-gray-300 space-y-1">
+                                <li>• Generative AI & LLMs</li>
+                                <li>• MLOps & Cloud Deployment</li>
+                                <li>• AI Agents & RAG</li>
+                                <li>• Production Systems</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-gray-200 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <div class="w-8 h-8 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-lg flex items-center justify-center text-white font-bold">
+                            <i class="fas fa-brain text-sm"></i>
+                        </div>
+                        <span class="text-lg font-bold gradient-text">AI Full-Stack Hub</span>
+                    </div>
+                    <p class="text-gray-600 text-sm">Empowering developers with free, world-class AI education from industry leaders.</p>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li><a href="#" class="hover:text-indigo-600">All Courses</a></li>
+                        <li><a href="#" class="hover:text-indigo-600">Learning Path</a></li>
+                        <li><a href="#" class="hover:text-indigo-600">Success Stories</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">Companies</h4>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li>Google</li>
+                        <li>Microsoft</li>
+                        <li>IBM</li>
+                        <li>Meta</li>
+                        <li>AWS</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">Connect</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-indigo-600 text-xl"><i class="fab fa-github"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-blue-400 text-xl"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-blue-600 text-xl"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-200 pt-8 text-center text-sm text-gray-500">
+                <p>&copy; 2025 AI Full-Stack Learning Hub. All courses verified free at time of listing.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Course Data
+        const courses = [
+            {
+                id: 1,
+                title: "Machine Learning with Python",
+                company: "freeCodeCamp",
+                platform: "freeCodeCamp",
+                level: "intermediate",
+                category: ["python", "ai-ml"],
+                description: "Build neural networks using PyTorch. Covers CNNs, RNNs, NLP, and recommendation systems with hands-on projects.",
+                certificate: "Free Verified Certification",
+                link: "https://www.freecodecamp.org/learn/machine-learning-with-python/",
+                icon: "fab fa-python",
+                color: "from-blue-500 to-blue-600"
+            },
+            {
+                id: 2,
+                title: "Meta Front-End Developer",
+                company: "Meta",
+                platform: "Coursera",
+                level: "beginner",
+                category: ["javascript", "beginner"],
+                description: "Complete frontend program: HTML, CSS, JavaScript, React, UI/UX principles. Professional certificate from Meta.",
+                certificate: "Free Audit + Certificate",
+                link: "https://www.coursera.org/specializations/meta-front-end-developer",
+                icon: "fab fa-react",
+                color: "from-blue-400 to-blue-600"
+            },
+            {
+                id: 3,
+                title: "IBM Full-Stack JavaScript",
+                company: "IBM",
+                platform: "Coursera",
+                level: "intermediate",
+                category: ["javascript", "cloud"],
+                description: "Node, Express, React, MongoDB, Docker, Kubernetes. Complete cloud-native full-stack development.",
+                certificate: "Free Audit + Certificate",
+                link: "https://www.coursera.org/professional-certificates/ibm-full-stack-javascript-developer",
+                icon: "fas fa-server",
+                color: "from-blue-600 to-blue-800"
+            },
+            {
+                id: 4,
+                title: "AI Agents Course",
+                company: "Hugging Face",
+                platform: "Hugging Face",
+                level: "intermediate",
+                category: ["ai-ml", "advanced"],
+                description: "Build and deploy AI agents using smolagents, LangGraph, and LlamaIndex. Includes certification.",
+                certificate: "Free Certificate",
+                link: "https://huggingface.co/agents-course",
+                icon: "fas fa-robot",
+                color: "from-yellow-400 to-orange-500"
+            },
+            {
+                id: 5,
+                title: "Google ML Crash Course",
+                company: "Google",
+                platform: "Google Developers",
+                level: "beginner",
+                category: ["python", "ai-ml", "beginner"],
+                description: "Fast-paced, practical introduction to machine learning with TensorFlow. Google's official course.",
+                certificate: "Free Completion Badge",
+                link: "https://developers.google.com/machine-learning/crash-course",
+                icon: "fab fa-google",
+                color: "from-red-500 to-yellow-500"
+            },
+            {
+                id: 6,
+                title: "Responsive Web Design",
+                company: "freeCodeCamp",
+                platform: "freeCodeCamp",
+                level: "beginner",
+                category: ["javascript", "beginner"],
+                description: "300-hour certification covering HTML5, CSS3, Flexbox, Grid, and responsive design principles.",
+                certificate: "Free Verified Cert",
+                link: "https://www.freecodecamp.org/learn/2022/responsive-web-design/",
+                icon: "fab fa-html5",
+                color: "from-orange-500 to-red-600"
+            },
+            {
+                id: 7,
+                title: "AWS Cloud Practitioner",
+                company: "AWS",
+                platform: "AWS Skill Builder",
+                level: "beginner",
+                category: ["cloud", "beginner"],
+                description: "Cloud concepts, AWS services, security, architecture. Foundation for cloud careers.",
+                certificate: "Free Digital Badge",
+                link: "https://skillbuilder.aws/",
+                icon: "fab fa-aws",
+                color: "from-orange-400 to-orange-600"
+            },
+            {
+                id: 8,
+                title: "Relational Databases",
+                company: "freeCodeCamp",
+                platform: "freeCodeCamp",
+                level: "intermediate",
+                category: ["cloud"],
+                description: "SQL, PostgreSQL, database design, Bash scripting, Git. Complete database certification.",
+                certificate: "Free Verified Cert",
+                link: "https://www.freecodecamp.org/learn/relational-database/",
+                icon: "fas fa-database",
+                color: "from-green-500 to-teal-600"
+            },
+            {
+                id: 9,
+                title: "Intro to Machine Learning",
+                company: "Kaggle",
+                platform: "Kaggle",
+                level: "beginner",
+                category: ["python", "ai-ml", "beginner"],
+                description: "Build your first models with scikit-learn. Random forests, feature engineering basics.",
+                certificate: "Free Certificate",
+                link: "https://www.kaggle.com/learn/intro-to-machine-learning",
+                icon: "fas fa-brain",
+                color: "from-cyan-500 to-blue-600"
+            },
+            {
+                id: 10,
+                title: "Generative AI with LLMs",
+                company: "AWS/DeepLearning.AI",
+                platform: "Coursera",
+                level: "intermediate",
+                category: ["ai-ml", "advanced"],
+                description: "Transformer architecture, fine-tuning, RLHF, deployment strategies for large language models.",
+                certificate: "Free Audit + Certificate",
+                link: "https://www.coursera.org/learn/generative-ai-with-llms",
+                icon: "fas fa-magic",
+                color: "from-purple-500 to-indigo-600"
+            },
+            {
+                id: 11,
+                title: "NLP Course",
+                company: "Hugging Face",
+                platform: "Hugging Face",
+                level: "intermediate",
+                category: ["ai-ml", "python"],
+                description: "Transformers, tokenizers, fine-tuning, and deployment. The definitive NLP course.",
+                certificate: "Free Certificate",
+                link: "https://huggingface.co/learn/nlp-course",
+                icon: "fas fa-language",
+                color: "from-yellow-400 to-yellow-600"
+            },
+            {
+                id: 12,
+                title: "Back End Development & APIs",
+                company: "freeCodeCamp",
+                platform: "freeCodeCamp",
+                level: "intermediate",
+                category: ["javascript", "cloud"],
+                description: "Node.js, Express, MongoDB, authentication, and REST API development.",
+                certificate: "Free Verified Cert",
+                link: "https://www.freecodecamp.org/learn/back-end-development-and-apis/",
+                icon: "fas fa-server",
+                color: "from-green-600 to-green-800"
+            },
+            {
+                id: 13,
+                title: "Azure AI Fundamentals",
+                company: "Microsoft",
+                platform: "Microsoft Learn",
+                level: "beginner",
+                category: ["ai-ml", "cloud", "beginner"],
+                description: "AI workloads, machine learning, computer vision, NLP on Azure cloud platform.",
+                certificate: "Free Badge (Challenge)",
+                link: "https://learn.microsoft.com/en-us/credentials/certifications/azure-ai-fundamentals/",
+                icon: "fab fa-microsoft",
+                color: "from-blue-500 to-cyan-600"
+            },
+            {
+                id: 14,
+                title: "Career Essentials in Gen AI",
+                company: "Microsoft",
+                platform: "LinkedIn Learning",
+                level: "beginner",
+                category: ["ai-ml", "beginner"],
+                description: "Generative AI models, ethical considerations, and real-world business impact.",
+                certificate: "Free Certificate",
+                link: "https://www.linkedin.com/learning/career-essentials-in-generative-ai",
+                icon: "fas fa-brain",
+                color: "from-blue-600 to-blue-800"
+            },
+            {
+                id: 15,
+                title: "Intel MLOps Professional",
+                company: "Intel",
+                platform: "Intel Developer",
+                level: "advanced",
+                category: ["ai-ml", "cloud", "advanced"],
+                description: "MLOps professional certification with hands-on labs and capstone project.",
+                certificate: "Free Professional Cert",
+                link: "https://www.intel.com/content/www/us/en/developer/certification/overview.html",
+                icon: "fas fa-microchip",
+                color: "from-blue-700 to-indigo-800"
+            },
+            {
+                id: 16,
+                title: "Meta Database Engineer",
+                company: "Meta",
+                platform: "Coursera",
+                level: "beginner",
+                category: ["cloud", "beginner"],
+                description: "SQL, Python database integration, MySQL, data modeling, and optimization.",
+                certificate: "Free Audit + Certificate",
+                link: "https://www.coursera.org/specializations/meta-database-engineer",
+                icon: "fas fa-database",
+                color: "from-blue-500 to-blue-700"
+            },
+            {
+                id: 17,
+                title: "Intro to Deep Learning",
+                company: "Kaggle",
+                platform: "Kaggle",
+                level: "intermediate",
+                category: ["ai-ml", "python"],
+                description: "TensorFlow and Keras for neural networks on structured data.",
+                certificate: "Free Certificate",
+                link: "https://www.kaggle.com/learn/intro-to-deep-learning",
+                icon: "fas fa-network-wired",
+                color: "from-purple-600 to-pink-600"
+            },
+            {
+                id: 18,
+                title: "Computer Vision",
+                company: "Kaggle",
+                platform: "Kaggle",
+                level: "intermediate",
+                category: ["ai-ml", "python", "advanced"],
+                description: "Convolutional Neural Networks (CNNs) with TensorFlow and Keras.",
+                certificate: "Free Certificate",
+                link: "https://www.kaggle.com/learn/computer-vision",
+                icon: "fas fa-eye",
+                color: "from-indigo-500 to-purple-600"
+            },
+            {
+                id: 19,
+                title: "Building RAG Agents",
+                company: "NVIDIA",
+                platform: "NVIDIA DLI",
+                level: "intermediate",
+                category: ["ai-ml", "advanced"],
+                description: "Retrieval-Augmented Generation, agent building, and LLM deployment.",
+                certificate: "Free Certificate",
+                link: "https://www.nvidia.com/training/",
+                icon: "fas fa-robot",
+                color: "from-green-500 to-teal-600"
+            },
+            {
+                id: 20,
+                title: "JavaScript Algorithms & DS",
+                company: "freeCodeCamp",
+                platform: "freeCodeCamp",
+                level: "beginner",
+                category: ["javascript", "beginner"],
+                description: "ES6+, algorithms, OOP, functional programming. 300-hour certification.",
+                certificate: "Free Verified Cert",
+                link: "https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures/",
+                icon: "fab fa-js-square",
+                color: "from-yellow-400 to-yellow-600"
+            }
+        ];
+
+        // Render Courses
+        function renderCourses(coursesToRender) {
+            const grid = document.getElementById('coursesGrid');
+            const noResults = document.getElementById('noResults');
+            
+            if (coursesToRender.length === 0) {
+                grid.innerHTML = '';
+                noResults.classList.remove('hidden');
+                return;
+            }
+            
+            noResults.classList.add('hidden');
+            grid.innerHTML = coursesToRender.map(course => `
+                <a href="${course.link}" target="_blank" class="block group">
+                    <div class="bg-white rounded-2xl shadow-md hover:shadow-2xl card-hover border border-gray-100 overflow-hidden h-full flex flex-col animate-fade-in">
+                        <div class="h-2 bg-gradient-to-r ${course.color}"></div>
+                        <div class="p-6 flex-1 flex flex-col">
+                            <div class="flex justify-between items-start mb-4">
+                                <div class="w-12 h-12 rounded-xl bg-gradient-to-br ${course.color} flex items-center justify-center text-white text-2xl company-logo group-hover:scale-110 transition-transform">
+                                    <i class="${course.icon}"></i>
+                                </div>
+                                <span class="px-3 py-1 rounded-full text-xs font-semibold bg-gray-100 text-gray-600 border border-gray-200">
+                                    ${course.level}
+                                </span>
+                            </div>
+                            
+                            <h3 class="text-xl font-bold text-gray-900 mb-2 group-hover:text-indigo-600 transition-colors line-clamp-2">
+                                ${course.title}
+                            </h3>
+                            
+                            <p class="text-sm text-gray-500 mb-3 font-medium">
+                                ${course.company} • ${course.platform}
+                            </p>
+                            
+                            <p class="text-gray-600 text-sm mb-4 line-clamp-3 flex-1">
+                                ${course.description}
+                            </p>
+                            
+                            <div class="flex items-center justify-between pt-4 border-t border-gray-100">
+                                <div class="flex items-center text-green-600 text-sm font-semibold">
+                                    <i class="fas fa-certificate mr-2"></i>
+                                    ${course.certificate}
+                                </div>
+                                <i class="fas fa-external-link-alt text-gray-400 group-hover:text-indigo-600 transition-colors"></i>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            `).join('');
+        }
+
+        // Filter Functionality
+        let currentFilter = 'all';
+        let searchTerm = '';
+
+        function filterCourses() {
+            let filtered = courses;
+            
+            // Apply category filter
+            if (currentFilter !== 'all') {
+                if (['beginner', 'intermediate', 'advanced'].includes(currentFilter)) {
+                    filtered = filtered.filter(c => c.level === currentFilter);
+                } else {
+                    filtered = filtered.filter(c => c.category.includes(currentFilter));
+                }
+            }
+            
+            // Apply search
+            if (searchTerm) {
+                const term = searchTerm.toLowerCase();
+                filtered = filtered.filter(c => 
+                    c.title.toLowerCase().includes(term) ||
+                    c.company.toLowerCase().includes(term) ||
+                    c.description.toLowerCase().includes(term)
+                );
+            }
+            
+            renderCourses(filtered);
+        }
+
+        // Event Listeners
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                e.target.classList.add('active');
+                currentFilter = e.target.dataset.filter;
+                filterCourses();
+            });
+        });
+
+        document.getElementById('searchInput').addEventListener('input', (e) => {
+            searchTerm = e.target.value;
+            filterCourses();
+        });
+
+        // Initial Render
+        renderCourses(courses);
+    </script>
+</body>
+</html>
